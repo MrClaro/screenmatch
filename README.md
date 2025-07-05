@@ -1,70 +1,90 @@
-# Screenmatch (sem web)
+# Screenmatch
 
-Projeto Java para consulta de séries e episódios via terminal, utilizando a API pública do OMDb (Open Movie Database).
+Projeto completo para consulta e visualização de séries, integrando backend em Java (Spring Boot) com frontend em HTML/CSS/JS.
+
+## Estrutura do Projeto
+
+- **backend/**: API Java Spring Boot responsável por buscar e processar informações sobre séries usando a OMDb API.
+- **frontend/**: Aplicação web para consumo da API, visualização e interação com os dados.
+- **README.md**: Este arquivo.
+- **.gitignore, .gitattributes**: Configurações do repositório.
+
+---
+
+## Tecnologias Utilizadas
+
+### Backend
+- **Java 17+**
+- **Spring Boot**
+- **HTTP Client (java.net.http.HttpClient)**
+- **Jackson (conversão JSON)**
+- **OMDb API** [(documentação)](https://www.omdbapi.com/)
+
+### Frontend
+- **HTML5, CSS3, JavaScript**
+- **Live Server (VS Code extension recomendada)**
+
+---
+
+## Como rodar o projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/MrClaro/screenmatch.git
+cd screenmatch
+```
+
+### 2. Configurar Backend
+
+- Navegue até a pasta `backend`
+- Insira sua **API KEY do OMDb** na classe principal (ex: `Principal.java`), substituindo `[API-KEY]` pelo seu token.
+- Compile e rode:
+
+```bash
+cd backend
+mvn clean package
+mvn spring-boot:run
+```
+Ou:
+```bash
+java -jar target/screenmatch-*.jar
+```
+
+### 3. Configurar Frontend
+
+- Navegue até a pasta `frontend`
+- Recomendado: Utilize a extensão **Live Server** do VS Code.
+- Clique com o botão direito em `index.html` > "Open with Live Server".
+
+---
 
 ## Funcionalidades
 
 - Busca de séries pelo nome.
-- Consulta de detalhes sobre a série (título, número de temporadas, avaliação IMDb).
-- Listagem de todas as temporadas e episódios, com dados individuais (título, número do episódio, avaliação, data de lançamento).
+- Consulta de detalhes (título, temporadas, avaliação IMDb).
+- Listagem de temporadas e episódios com informações detalhadas.
 - Exibição do top 5 episódios por avaliação.
-- Cálculo de estatísticas de avaliação por temporada (média, máximo, mínimo, soma total).
-
-## Como funciona
-
-O programa é executado via linha de comando (CLI) com Spring Boot. O usuário informa o nome da série, e o sistema consulta a API OMDb para obter as informações. Todos os dados são processados e apresentados no terminal.
-
-### Exemplo de fluxo:
-
-1. O usuário executa o programa e digita o nome da série desejada.
-2. O sistema consulta a API, exibe informações gerais e busca todas as temporadas e episódios.
-3. O usuário visualiza o top 5 episódios e estatísticas de avaliação.
-
-## Tecnologias Utilizadas
-
-- **Java 17+**
-- **Spring Boot** (CLI via `CommandLineRunner`)
-- **API HTTP Client** (`java.net.http.HttpClient`)
-- **Jackson** (converter JSON)
-- **OMDb API** (https://www.omdbapi.com/)
-
-## Como executar
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/MrClaro/screenmatch-sem-web.git
-   cd screenmatch-sem-web
-   ```
-
-2. Insira sua API KEY do OMDb na classe `Principal.java`, substituindo `[API-KEY]` pelo seu token.
-
-3. Compile o projeto (necessário Java e Maven instalados):
-   ```bash
-   mvn clean package
-   ```
-
-4. Execute o aplicativo:
-   ```bash
-   mvn spring-boot:run
-   ```
-   Ou:
-   ```bash
-   java -jar target/screenmatch-sem-web-*.jar
-   ```
-
-5. Siga as instruções no terminal.
-
-## Estrutura do Projeto
-
-- `src/main/java/br/com/alura/screenmatch/client/Principal.java` — Classe principal, interação com o usuário e lógica de busca.
-- `src/main/java/br/com/alura/screenmatch/service/ConsumoApi.java` — Requisições HTTP à API OMDb.
-- `src/main/java/br/com/alura/screenmatch/service/ConverteDados.java` — Conversão de JSON para objetos Java.
-- `src/main/java/br/com/alura/screenmatch/model/` — Modelos de dados (Série, Temporada, Episódio).
-
-## Observação
-
-Para utilizar o aplicativo, é necessário obter uma chave de API gratuita em [omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx) e incluí-la no código-fonte.
+- Estatísticas de avaliação por temporada (média, máximo, mínimo, soma total).
 
 ---
 
-Projeto desenvolvido por [MrClaro](https://github.com/MrClaro)
+## Contribuição
+
+1. Faça um fork do projeto.
+2. Crie uma branch (`git checkout -b feature/nome-da-feature`)
+3. Commit suas mudanças (`git commit -m 'feat: minha contribuição'`)
+4. Push na branch (`git push origin feature/nome-da-feature`)
+5. Abra um Pull Request.
+
+---
+
+## Licença
+
+Projeto desenvolvido por [MrClaro](https://github.com/MrClaro) para fins educacionais.
+
+---
+
+## Observação
+
+Para utilizar a OMDb API é necessário obter uma chave gratuita em [omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx).
